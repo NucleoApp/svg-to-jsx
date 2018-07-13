@@ -135,7 +135,8 @@ function afterBuildSVG(built) {
 
             return 'style={' + JSON.stringify(style) + '}';
         })
-        .replace(/passProps="1"/, '{...this.props}');
+        .replace(/passProps="1"/, '{...this.props}')
+        .replace(/"{this.props.(\w+)}"/g, '{this.props.$1}');
 }
 
 function buildSVG(object) {
